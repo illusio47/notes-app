@@ -48,6 +48,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <a href="index.php" class="btn btn-secondary">Cancel</a>
         </div>
     </form>
+    <h12>Quick Tip</h2>
 </div>
+
 
 <?php require_once 'includes/footer.php'; ?>
