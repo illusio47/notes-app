@@ -1,0 +1,36 @@
+# Deny access to sensitive files
+<FilesMatch "^(db\.php|auth\.php)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Disable directory browsing
+Options -Indexes
+
+# Enable URL rewriting
+RewriteEngine On
+
+# Redirect to HTTPS (uncomment after setting up SSL)
+# RewriteCond %{HTTPS} off
+# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Remove .php extension (optional)
+# RewriteCond %{REQUEST_FILENAME} !-d
+# RewriteCond %{REQUEST_FILENAME}\.php -f
+# RewriteRule ^(.*)$ $1.php [NC,L]
+
+# Error pages
+ErrorDocument 404 /index.php
+ErrorDocument 500 /index.php
+
+# Protect .htaccess
+<Files .htaccess>
+    Order allow,deny
+    Deny from all
+</Files>
+
+# PHP settings
+php_flag display_errors off
+php_value max_execution_time 300
+php_value upload_max_filesize 10M
+php_value post_max_size 10M
